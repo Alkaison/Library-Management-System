@@ -1,6 +1,10 @@
 # Library-Management-System
 An Advance Library Management System coded in C to help better understand the concept of File Management.
 
+## Important Note
+
+> **Currently this project is in developement, wait for its completeion.**
+
 ## MIT LICENSE
 ```
 MIT License
