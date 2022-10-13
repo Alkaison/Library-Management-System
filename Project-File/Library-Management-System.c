@@ -11,15 +11,30 @@
 
 // Function Prototypes
 void password(void);
+void menu(void);
 
-// Main Function Body 
+// User Operation Functions 
+void addUser(void);
+void modifyuser(void);
+void listUser(void);
+void searchUser(void);
+void deleteUser(void);
+
+// Book Operation Functions 
+void addBook(void);
+void modifyBook(void);
+void listBook(void);
+void rentBook(void);
+void searchBook(void);
+void deleteBook(void);
+
+// Main Function 
 int main(){
 
     password();
     return 0;
 }
 
-// Login-Password Function 
 void password(){
 
     system("cls");
@@ -32,7 +47,8 @@ void password(){
 	printf("Enter your password. Hit ENTER to confirm. \n");
 	printf("Password:");
 
-	while(1){
+	while(1)
+    {
 
 		ch = getch(); // get key
 
@@ -43,7 +59,8 @@ void password(){
 		}
         else if(ch == BKSP)
         {
-			if(i > 0){
+			if(i > 0)
+            {
 				i--;
 				printf("\b \b"); // for backspace
 			}
