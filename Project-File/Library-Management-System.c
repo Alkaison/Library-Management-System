@@ -229,9 +229,7 @@ void endScreen(){
     printf("> Github: https://github.com/Alkaison \n");
     printf("> Twitter: https://twitter.com/Alkaison \n");
     printf("> LinkedIn: https://www.linkedin.com/in/Alkaison \n\n");
-    printf("Press any key to exit.\n");
 
-    getch();
 }
 
 // User Functions 
@@ -308,7 +306,35 @@ void modifyUser(){
 }
 
 void listUser(){
+    
+    system("cls");
+    
+    FILE *pF = fopen("user_Records.txt", "r");
 
+    char fname[255], lname[255], gender[5];
+    double sid, phone;
+    //char gender;
+
+    while(fscanf(pF, "%s %s %s %lf %lf \n", fname, lname, gender, &sid, &phone) != EOF)
+    {
+       strcat(fname, " ");
+       strcat(fname, lname);
+
+        printf("-------------------------------\n");
+        printf("> Full Name: %s \n", fname);
+        //printf("> Last Name: %s \n", lname); 
+        printf("> Gender: %s \n", gender);
+        printf("> Student-ID: %.0lf \n", sid);
+        printf("> Phone No.: %.0lf \n", phone);
+        printf("-------------------------------\n\n\n");
+
+    }
+
+    fclose(pF);
+    
+    printf("Press any key to get back to main menu.\n");
+    getch();
+    userPanel();
 }
 
 void searchUser(){
