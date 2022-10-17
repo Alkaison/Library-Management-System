@@ -308,6 +308,94 @@ label1:
 
 void modifyUser(){
 
+    system("cls");
+    fflush(stdin);
+
+    char fname[255], lname[255], gender[5];
+    char fname1[255], lname1[255], gender1[5];
+    double sid, sid1, phone, phone1;
+
+    int compare, flag=0;
+
+    char find[255];
+    printf("Enter the name of the person you want to see the detail: ");
+    gets(find);
+
+    fflush(stdin);
+
+    FILE *pF = fopen("user_Records.txt", "r");
+    FILE *pT = fopen("temporary.txt", "a");
+
+    while(fscanf(pF, "%s %s %s %lf %lf \n", fname, lname, gender, &sid, &phone) != EOF)
+    {
+        compare = strcmp(find, fname);
+        if(compare == 0)
+        {
+            printf("\n---------------------------------------------\n");
+            printf(">>> Record Found, Allowing Modifications <<<\n");
+            printf("-----------------------------------------------\n\n");
+
+            printf("> Enter First Name: ");
+            gets(fname1);
+
+            printf("> Enter Last Name: ");
+            gets(lname1);
+
+            printf("> Enter Gender: ");
+            gets(gender1);
+
+            printf("> Enter Student ID: ");
+            scanf("%lf",&sid1);
+
+            printf("> Enter Phone Number: ");
+            scanf("%lf",&phone1);
+
+            fprintf(pT, "%s %s %s %.0lf %.0lf \n",fname1, lname1, gender1, sid1, phone1);
+            printf("\n\nProcessing your changes....");
+
+            flag = 1;
+        }
+        else
+        {
+            fprintf(pT, "%s %s %s %.0lf %.0lf \n",fname, lname, gender, sid, phone);
+        }
+    }
+
+    fclose(pF);
+    fclose(pT);
+
+    fflush(stdin);
+
+    pF = fopen("user_Records.txt", "w");
+    fclose(pF);
+
+    if(flag == 0)
+    {
+        printf("\n\n-------------------------------\n");
+        printf(">>> Record Not Found <<<\n");
+        printf("-------------------------------\n\n");
+        printf("Redirecting to User Panel...");
+    }
+
+    pF = fopen("user_Records.txt", "a");
+    pT = fopen("temporary.txt", "r");
+
+    while(fscanf(pT, "%s %s %s %lf %lf \n", fname, lname, gender, &sid, &phone) != EOF)
+    {
+        fprintf(pF, "%s %s %s %.0lf %.0lf \n", fname, lname, gender, sid, phone);
+    }
+
+    fclose(pF);
+    fclose(pT);
+
+    pT = fopen("temporary.txt", "w");
+    fclose(pT);
+
+    fflush(stdin);
+
+    Sleep(2000);
+    userPanel();
+
 }
 
 void listUser(){
