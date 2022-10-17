@@ -35,6 +35,7 @@ void deleteBook(void);
 // Main Function 
 int main(){
 
+    system("cls");
     password();
     return 0;
 }
@@ -133,7 +134,7 @@ void userPanel(){
 
     int number;
 
-    printf(">>> Library Management System <<< \n");
+    printf(">>> Library Management System - User Panel <<< \n");
     printf("> 1. Add User \n");
     printf("> 2. Modify User \n");
     printf("> 3. List User \n");
@@ -180,7 +181,7 @@ void bookPanel(){
 
     int number;
 
-    printf(">>> Library Management System <<< \n");
+    printf(">>> Library Management System - Book Panel <<< \n");
     printf("> 1. Add Book \n");
     printf("> 2. Modify Book \n");
     printf("> 3. List Book \n");
@@ -318,7 +319,7 @@ void modifyUser(){
     int compare, flag=0;
 
     char find[255];
-    printf("Enter the name of the person you want to see the detail: ");
+    printf("Enter the name of the person you want to modify the detail: ");
     gets(find);
 
     fflush(stdin);
@@ -407,8 +408,8 @@ void listUser(){
 
     char fname[255], lname[255], gender[5];
     double sid, phone;
-    //char gender;
-
+    int counter=0;
+    
     while(fscanf(pF, "%s %s %s %lf %lf \n", fname, lname, gender, &sid, &phone) != EOF)
     {
        strcat(fname, " ");
@@ -422,10 +423,19 @@ void listUser(){
         printf("> Phone No.: %.0lf \n", phone);
         printf("-------------------------------\n\n\n");
 
+        counter++;
+        
     }
 
     fclose(pF);
-    
+
+    if(counter == 0)
+    {
+        printf("-------------------------------------\n");
+        printf("There is no user records added yet...\n");
+        printf("--------------------------------------\n\n");
+    }
+
     printf("Press any key to get back to main menu.\n");
     getch();
     userPanel();
@@ -509,6 +519,77 @@ label2:
 
 void deleteUser(){
 
+    system("cls");
+    fflush(stdin);
+
+    char fname[255], lname[255], gender[5];
+    char fname1[255], lname1[255], gender1[5];
+    double sid, sid1, phone, phone1;
+
+    int compare, flag=0;
+
+    char find[255];
+    printf("Enter the name of the person you want to delete the detail: ");
+    gets(find);
+
+    fflush(stdin);
+
+    FILE *pF = fopen("user_Records.txt", "r");
+    FILE *pT = fopen("temporary.txt", "a");
+
+    while(fscanf(pF, "%s %s %s %lf %lf \n", fname, lname, gender, &sid, &phone) != EOF)
+    {
+        compare = strcmp(find, fname);
+        if(compare == 0)
+        {
+            printf("\n---------------------------------------------\n");
+            printf(">>> Record Deleted <<<\n");
+            printf("-----------------------------------------------\n\n");
+            printf("Redirecting to User Panel...");
+
+
+            flag = 1;
+        }
+        else
+        {
+            fprintf(pT, "%s %s %s %.0lf %.0lf \n",fname, lname, gender, sid, phone);
+        }
+    }
+
+    fclose(pF);
+    fclose(pT);
+
+    fflush(stdin);
+
+    pF = fopen("user_Records.txt", "w");
+    fclose(pF);
+
+    if(flag == 0)
+    {
+        printf("\n\n-------------------------------\n");
+        printf(">>> Record Not Found <<<\n");
+        printf("-------------------------------\n\n");
+        printf("Redirecting to User Panel...");
+    }
+
+    pF = fopen("user_Records.txt", "a");
+    pT = fopen("temporary.txt", "r");
+
+    while(fscanf(pT, "%s %s %s %lf %lf \n", fname, lname, gender, &sid, &phone) != EOF)
+    {
+        fprintf(pF, "%s %s %s %.0lf %.0lf \n", fname, lname, gender, sid, phone);
+    }
+
+    fclose(pF);
+    fclose(pT);
+
+    pT = fopen("temporary.txt", "w");
+    fclose(pT);
+
+    fflush(stdin);
+
+    Sleep(2000);
+    userPanel();
 }
 
 // Book Functions
