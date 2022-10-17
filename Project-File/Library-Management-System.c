@@ -44,6 +44,7 @@ int main(){
 void password(){
 
     system("cls");
+    fflush(stdin);
 
     char pwd[255];
     char code[255] = {"Alkaison"};
@@ -98,6 +99,7 @@ void password(){
 void menu(){
     
     system("cls");
+    fflush(stdin);
 
     int number;
 
@@ -127,6 +129,7 @@ void menu(){
 void userPanel(){
 
     system("cls");
+    fflush(stdin);
 
     int number;
 
@@ -173,6 +176,7 @@ void userPanel(){
 void bookPanel(){
 
     system("cls");
+    fflush(stdin);
 
     int number;
 
@@ -223,6 +227,7 @@ void bookPanel(){
 void endScreen(){
 
     system("cls");
+    fflush(stdin);
 
     printf(">>> Library Management System in C <<< \n\n");
     printf("> Creator: @Alkaison (Ganesh Mourya) \n\n");
@@ -308,6 +313,7 @@ void modifyUser(){
 void listUser(){
     
     system("cls");
+    fflush(stdin);
     
     FILE *pF = fopen("user_Records.txt", "r");
 
@@ -339,6 +345,78 @@ void listUser(){
 
 void searchUser(){
 
+label2:
+
+    system("cls");
+    fflush(stdin);
+
+    char fname[255], lname[255], gender[5];
+    double sid, phone;
+
+    int flag=0;
+    int compare;
+
+    char find[255];
+    printf("Enter the name of the person you want to see the detail: ");
+    gets(find);
+
+    FILE *pF = fopen("user_Records.txt", "r");
+
+     while(fscanf(pF, "%s %s %s %lf %lf \n", fname, lname, gender, &sid, &phone) != EOF)
+    {
+        //strcmp(variable, variable1) -- if both the strings are equal then it will return 0 otherwise a random number.
+        compare = strcmp(find, fname);
+
+        if(compare == 0)
+        {
+            strcat(fname, " ");
+            strcat(fname, lname);
+
+            printf("\n>>> Record Found <<< \n\n");
+
+            printf("-------------------------------\n");
+            printf("> Full Name: %s \n", fname);
+            printf("> Gender: %s \n", gender);
+            printf("> Student-ID: %.0lf \n", sid);
+            printf("> Phone Number: %.0lf \n", phone);
+            printf("-------------------------------\n\n");
+            
+            flag=1;
+
+        }
+
+    }
+    
+    fclose(pF);
+
+    if(flag == 0)
+    {
+        printf("\n>>> Record Not Found <<< \n");
+    }
+
+    fflush(stdin);
+
+    char input;
+    printf("\nDo you wanna search for more records [y/N]: ");
+    scanf("%c",&input);
+
+    if(input == 'y' || input=='Y')
+    {
+        goto label2;
+    }
+    else if(input=='n' || input=='N')
+    {
+        printf("\nRedirecting to main menu.");
+        Sleep(2000);
+        userPanel();
+    }
+    else
+    {
+        printf("\nInvaild input. Redirecting to main menu.");
+        Sleep(2000);
+        userPanel();
+    }
+    
 }
 
 void deleteUser(){
