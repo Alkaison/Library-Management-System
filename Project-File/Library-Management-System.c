@@ -35,7 +35,6 @@ void deleteBook(void);
 // Main Function 
 int main(){
 
-    system("cls");
     password();
     return 0;
 }
@@ -105,9 +104,9 @@ void menu(){
     int number;
 
     printf(">>> Library Management System <<< \n");
-    printf("> 1. User Panel \n");
-    printf("> 2. Book Panel \n");
-    printf("\nEnter the number & hit ENTER: ");
+    printf("> 1. User Management Panel \n");
+    printf("> 2. Book Management Panel \n\n");
+    printf("> Enter the number & hit ENTER: ");
     scanf("%d",&number);
 
     fflush(stdin);
@@ -140,9 +139,10 @@ void userPanel(){
     printf("> 3. List User \n");
     printf("> 4. Search User \n");
     printf("> 5. Delete User \n");
-    printf("> 6. Close the Program... \n");
+    printf("> 6. Open Main Menu \n");
+    printf("> 7. Close the Program... \n\n");
 
-    printf("\nEnter the number & hit ENTER: ");
+    printf("> Enter the number & hit ENTER: ");
     scanf("%d",&number);
 
     fflush(stdin);
@@ -165,6 +165,9 @@ void userPanel(){
             deleteUser();
             break;
         case 6:
+            menu();
+            break;
+        case 7:
             endScreen();
             break;
         default:
@@ -188,7 +191,8 @@ void bookPanel(){
     printf("> 4. Rent Book \n");
     printf("> 5. Search Book \n");
     printf("> 6. Delete Book \n");
-    printf("> 7. Close the Program... \n");
+    printf("> 7. Open Main Menu \n");
+    printf("> 8. Close the Program... \n");
 
     printf("\nEnter the number & hit ENTER: ");
     scanf("%d",&number);
@@ -216,6 +220,9 @@ void bookPanel(){
             deleteBook();
             break;
         case 7:
+            menu();
+            break;
+        case 8:
             endScreen();
             break;
         default:
@@ -272,6 +279,8 @@ label1:
 
         fprintf(pF, "%s %s %c %.0lf %.0lf \n", fname, lname, gender, sid, phone);
 
+        printf("\n>>> User Record Added Successfully <<< \n");
+
     }
     else
     {
@@ -279,8 +288,6 @@ label1:
     }
 
     fclose(pF); 
-
-    printf("\n>>> User Record Added Successfully <<< \n");
 
     fflush(stdin);
 
@@ -423,8 +430,7 @@ void listUser(){
         printf("> Phone No.: %.0lf \n", phone);
         printf("-------------------------------\n\n\n");
 
-        counter++;
-        
+        counter++; 
     }
 
     fclose(pF);
@@ -436,7 +442,7 @@ void listUser(){
         printf("--------------------------------------\n\n");
     }
 
-    printf("Press any key to get back to main menu.\n");
+    printf("Press any key to get back to User Panel.\n");
     getch();
     userPanel();
 }
@@ -480,9 +486,7 @@ label2:
             printf("-------------------------------\n\n");
             
             flag=1;
-
         }
-
     }
     
     fclose(pF);
@@ -504,17 +508,16 @@ label2:
     }
     else if(input=='n' || input=='N')
     {
-        printf("\nRedirecting to main menu.");
+        printf("\nRedirecting to User Panel.");
         Sleep(2000);
         userPanel();
     }
     else
     {
-        printf("\nInvaild input. Redirecting to main menu.");
+        printf("\nInvaild input. Redirecting to User Panel.");
         Sleep(2000);
         userPanel();
-    }
-    
+    } 
 }
 
 void deleteUser(){
