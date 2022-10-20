@@ -714,6 +714,75 @@ void rentBook(){
 
 void searchBook(){
 
+label4:
+
+    system("cls");
+    fflush(stdin);
+
+    char name[255], author[255], publisher[255];
+    double bookid, price, quantity;
+
+    int flag=0;
+    int compare;
+
+    char find[255];
+    printf("Enter the name of the book you want to see the detail: ");
+    gets(find);
+
+    FILE *pF = fopen("book_Records.txt", "r");
+
+    while(fscanf(pF, "%s %s %s %lf %lf %lf \n", name, author, publisher, &bookid, &quantity, &price) != EOF)
+    {
+        compare = strcmp(find, name);
+
+        if(compare == 0)
+        {
+
+            printf("\n>>> Record Found <<< \n\n");
+
+            printf("-------------------------------\n");
+            printf("> Book Name: %s \n", name);
+            printf("> Auhtor: %s \n", author);
+            printf("> Publisher: %s\n", publisher);
+            printf("> Book ID: %.0lf \n", bookid);
+            printf("> Quantity: %.0lf \n", quantity);
+            printf("> Price: %.0lf \n", price);
+            printf("-------------------------------\n\n\n");
+            
+            flag=1;
+        }
+    }
+    
+    fclose(pF);
+
+    if(flag == 0)
+    {
+        printf("\n>>> Record Not Found <<< \n");
+    }
+
+    fflush(stdin);
+
+    char input;
+    printf("\nDo you wanna search for more records [y/N]: ");
+    scanf("%c",&input);
+
+    if(input == 'y' || input=='Y')
+    {
+        goto label4;
+    }
+    else if(input=='n' || input=='N')
+    {
+        printf("\nRedirecting to Book Panel.");
+        Sleep(2000);
+        bookPanel();
+    }
+    else
+    {
+        printf("\nInvaild input. Redirecting to Book Panel.");
+        Sleep(2000);
+        bookPanel();
+    } 
+
 }
 
 void deleteBook(){
