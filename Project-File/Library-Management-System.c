@@ -803,7 +803,19 @@ void listBook(){
 }
 
 void rentBook(){
+    
+    system("cls");
+    fflush(stdin);
 
+    // check if user exists
+    
+    // check if book exists and quantity is > 0
+
+    // check if user has enough money for the book (book price)
+
+    // global variables for storing records
+
+    // new rental file for data storing 
 }
 
 void searchBook(){
