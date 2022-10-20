@@ -1,6 +1,6 @@
-Dracula Willam Stanford 18 8 90 
-Shogun James Standford 19 5 50 
-Eillpsis Newton Oxford 24 15 110 
+Dracula Willam Stanford 11 8 90 
+Shogun James Standford 12 5 50 
+Eillpsis Newton Oxford 13 15 110 
 Candide Voltaire Nalanda 14 15 120 
-Beloved Toni DTU 23 10 100 
-Testing Kai VSCode 11 20 100 
+Beloved Toni DTU 15 10 100 
+Test Alkaison Intejii 16 10 1000 
