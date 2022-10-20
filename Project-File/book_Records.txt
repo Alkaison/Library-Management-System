@@ -1,1 +1,6 @@
-Let Us C Kai Tension 15 12 123 
+Dracula Willam Stanford 18 8 90 
+Shogun James Standford 19 5 50 
+Eillpsis Newton Oxford 24 15 110 
+Candide Voltaire Nalanda 14 15 120 
+Beloved Toni DTU 23 10 100 
+Testing Kai VSCode 11 20 100 
