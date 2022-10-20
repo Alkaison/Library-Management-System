@@ -3,4 +3,3 @@ Shogun James Standford 12 5 50
 Eillpsis Newton Oxford 13 15 110 
 Candide Voltaire Nalanda 14 15 120 
 Beloved Toni DTU 15 10 100 
-Test Alkaison Intejii 16 10 1000 

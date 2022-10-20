@@ -743,7 +743,7 @@ void modifyBook(){
         printf("\n\n-------------------------------\n");
         printf(">>> Record Not Found <<<\n");
         printf("-------------------------------\n\n");
-        printf("Redirecting to User Panel...");
+        printf("Redirecting to Book Panel...");
     }
 
     pF = fopen("book_Records.txt", "a");
@@ -881,4 +881,76 @@ label4:
 
 void deleteBook(){
 
+    system("cls");
+    fflush(stdin);
+
+    char name[255], author[255], publisher[255];
+    double bookid, price, quantity;
+
+    char name1[255], author1[255], publisher1[255];
+    double bookid1, price1, quantity1;
+
+    int flag=0;
+    int compare;
+
+    char find[255];
+    printf("Enter the name of the book you want to delete the detail: ");
+    gets(find);
+
+    fflush(stdin);
+
+    FILE *pF = fopen("book_Records.txt", "r");
+    FILE *pT = fopen("temporary.txt", "a");
+
+    while(fscanf(pF, "%s %s %s %lf %lf %lf \n", name, author, publisher, &bookid, &quantity, &price) != EOF)
+    {
+        compare = strcmp(find, name);
+
+        if(compare == 0)
+        {
+            printf("\n---------------------------------------------\n");
+            printf(">>> Record Deleted <<<\n");
+            printf("-----------------------------------------------\n\n");
+            printf("Redirecting to Book Panel...");
+
+            flag = 1;
+        }
+        else
+        {
+            fprintf(pT, "%s %s %s %.0lf %.0lf %.0lf \n", name, author, publisher, bookid, quantity, price);
+        }
+    }
+
+    fclose(pF);
+    fclose(pT);
+ 
+    fflush(stdin); 
+
+    pF = fopen("book_Records.txt", "w");
+    fclose(pF);
+
+    if(flag == 0)
+    {
+        printf("\n\n-------------------------------\n");
+        printf(">>> Record Not Found <<<\n");
+        printf("-------------------------------\n\n");
+        printf("Redirecting to Book Panel...");
+    }
+
+    pF = fopen("book_Records.txt", "a");
+    pT = fopen("temporary.txt", "r");
+
+    while(fscanf(pT, "%s %s %s %lf %lf %lf \n", name, author, publisher, &bookid, &quantity, &price) != EOF)
+    {
+        fprintf(pF, "%s %s %s %.0lf %.0lf %.0lf \n", name, author, publisher, bookid, quantity, price);
+    }
+
+    fclose(pF);
+    fclose(pT);
+
+    pT = fopen("temporary.txt", "w");
+    fclose(pT);
+
+    Sleep(2000);
+    bookPanel();
 }
