@@ -43,6 +43,6 @@ Book Details:
 1. Book ID 
 2. Book Name 
 3. Book Author 
-4. Book Category 
+4. Book Publisher 
 5. Book Quantity 
 6. Rent Cost - Default: 100₹ 

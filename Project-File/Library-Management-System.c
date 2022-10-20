@@ -599,6 +599,72 @@ void deleteUser(){
 
 void addBook(){
 
+label3:
+
+    system("cls");
+    fflush(stdin);
+
+    char name[255], author[255], publisher[255];
+    double bookid, quantity, price;
+
+    FILE *pF = fopen("book_Records.txt", "ab+");
+
+    if(pF != NULL)
+    {
+        printf("Enter Book Name: ");
+        gets(name);
+
+        printf("Enter Book Author: ");
+        gets(author);
+
+        printf("Enter Book Publisher: ");
+        gets(publisher);
+
+        fflush(stdin);
+
+        printf("Enter Book ID: ");
+        scanf("%lf",&bookid);
+
+        printf("Enter Book Quantity: ");
+        scanf("%lf",&quantity);
+
+        printf("Enter Book Price: ");
+        scanf("%lf",&price);
+
+        fprintf(pF, "%s %s %s %.0lf %.0lf %.0lf \n", name, author, publisher, bookid, quantity, price);
+
+        printf("\n>>> Book Record Added Successfully <<< \n");
+    }
+    else
+    {
+        printf("Unable to open/locate the file.");
+    }
+
+    fclose(pF); 
+
+    fflush(stdin);
+
+    char input;
+    printf("\nDo you wanna enter more records [y/N]: ");
+    scanf("%c",&input);
+
+    if(input == 'y' || input=='Y')
+    {
+        goto label3;
+    }
+    else if(input=='n' || input=='N')
+    {
+        printf("\nRedirecting to Book Panel.");
+        Sleep(2000);
+        bookPanel();
+    }
+    else
+    {
+        printf("\nInvaild input. Redirecting to Book Panel.");
+        Sleep(2000);
+        bookPanel();
+    }
+
 }
 
 void modifyBook(){
