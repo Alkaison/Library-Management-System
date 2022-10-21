@@ -21,7 +21,7 @@ void endScreen(void);
 void addUser(void);
 void modifyUser(void);
 void listUser(void);
-void searchUser(void);
+int searchUser(int);
 void deleteUser(void);
 
 // Book Operation Functions 
@@ -29,7 +29,7 @@ void addBook(void);
 void modifyBook(void);
 void listBook(void);
 void rentBook(void);
-void searchBook(void);
+int searchBook(int);
 void deleteBook(void);
 
 // Main Function 
@@ -40,6 +40,7 @@ int main(){
 }
 
 // System Functions 
+    int passTerminator = 1;
 
 void password(){
 
@@ -91,6 +92,7 @@ void password(){
     else
     {
         printf("\nInvaild Password!");
+        (passTerminator == 3) ? exit(0) : passTerminator++;
         Sleep(2000);
         password();
     }
@@ -159,7 +161,7 @@ void userPanel(){
             listUser();
             break;
         case 4:
-            searchUser();
+            searchUser(0);
             break;
         case 5:
             deleteUser();
@@ -214,7 +216,7 @@ void bookPanel(){
             rentBook();
             break;
         case 5:
-            searchBook();
+            searchBook(0);
             break;
         case 6:
             deleteBook();
@@ -243,6 +245,7 @@ void endScreen(){
     printf("> Twitter: https://twitter.com/Alkaison \n");
     printf("> LinkedIn: https://www.linkedin.com/in/Alkaison \n\n");
 
+    exit(0);
 }
 
 // User Functions 
@@ -447,7 +450,7 @@ void listUser(){
     userPanel();
 }
 
-void searchUser(){
+int searchUser(int nameSearcher){
 
 label2:
 
@@ -459,9 +462,9 @@ label2:
 
     int flag=0;
     int compare;
-
     char find[255];
-    printf("Enter the name of the person you want to see the detail: ");
+
+    (nameSearcher != 3) ? printf("Enter the name of the person you want to see the detail: ") : printf("Enter the name of the student who wants to rent book: ");
     gets(find);
 
     FILE *pF = fopen("user_Records.txt", "r");
@@ -473,17 +476,23 @@ label2:
 
         if(compare == 0)
         {
-            strcat(fname, " ");
-            strcat(fname, lname);
+            if(nameSearcher != 3)
+            {
+                strcat(fname, " ");
+                strcat(fname, lname);
 
-            printf("\n>>> Record Found <<< \n\n");
+                printf("\n---------------------\n");
+                printf(">>> Record Found <<< \n");
+                printf("---------------------\n\n");
 
-            printf("-------------------------------\n");
-            printf("> Full Name: %s \n", fname);
-            printf("> Gender: %s \n", gender);
-            printf("> Student-ID: %.0lf \n", sid);
-            printf("> Phone Number: %.0lf \n", phone);
-            printf("-------------------------------\n\n");
+                printf("-------------------------------\n");
+                printf("> Full Name: %s \n", fname);
+                printf("> Gender: %s \n", gender);
+                printf("> Student-ID: %.0lf \n", sid);
+                printf("> Phone Number: %.0lf \n", phone);
+                printf("-------------------------------\n\n");
+            
+            }
             
             flag=1;
         }
@@ -493,31 +502,21 @@ label2:
 
     if(flag == 0)
     {
-        printf("\n>>> Record Not Found <<< \n");
+        printf("\n>>> Record Not Found <<< \n\n");
     }
 
     fflush(stdin);
-
-    char input;
-    printf("\nDo you wanna search for more records [y/N]: ");
-    scanf("%c",&input);
-
-    if(input == 'y' || input=='Y')
+    
+    if(nameSearcher != 3)
     {
-        goto label2;
-    }
-    else if(input=='n' || input=='N')
-    {
-        printf("\nRedirecting to User Panel.");
-        Sleep(2000);
+        printf("Press any key to redirect back to Panel.");
+        getch();
         userPanel();
     }
-    else
+    else if(nameSearcher == 3 && flag == 1)
     {
-        printf("\nInvaild input. Redirecting to User Panel.");
-        Sleep(2000);
-        userPanel();
-    } 
+        return 5;
+    }
 }
 
 void deleteUser(){
@@ -803,13 +802,54 @@ void listBook(){
 }
 
 void rentBook(){
-    
-    system("cls");
+
+    int terminator=1, nameFound, bookFound;
+
+label5: 
+
     fflush(stdin);
 
     // check if user exists
+    nameFound = searchUser(3);
+
+    if(nameFound != 5 && terminator != 4)
+    {
+        printf("Press any key to re-enter the name. \n");
+        getch();
+        (terminator == 3) ? bookPanel() : terminator++;
+        goto label5;
+    }
+    else if(nameFound == 5)
+    {
+        printf("\nUser Found in Records! \nPlease wait... \n");
+        terminator = 1;
+        Sleep(2000);
+    }
+
+label6: 
+
+    fflush(stdin);
+
+    // check if book exists
+    bookFound = searchBook(3);
+
+    if(bookFound != 5 && terminator != 4)
+    {
+        printf("Press any key to re-enter the name. \n");
+        getch();
+        (terminator == 3) ? bookPanel() : terminator++;
+        goto label6;
+    }
+    else if(bookFound == 5)
+    {
+        printf("\nBook Found & In-Stock! \nPlease wait... \n");
+        Sleep(2000);
+    }
+
+    // check if book quantity is > 0
     
-    // check if book exists and quantity is > 0
+    printf("User Searcher: %d \n", nameFound);
+    printf("Book Searcher: %d \n", bookFound);
 
     // check if user has enough money for the book (book price)
 
@@ -818,7 +858,7 @@ void rentBook(){
     // new rental file for data storing 
 }
 
-void searchBook(){
+int searchBook(int bookSearcher){
 
 label4:
 
@@ -830,9 +870,9 @@ label4:
 
     int flag=0;
     int compare;
-
     char find[255];
-    printf("Enter the name of the book you want to see the detail: ");
+
+    (bookSearcher != 3) ? printf("Enter the name of the book you want to see the detail: ") : printf("Enter the name of the book you want: ");
     gets(find);
 
     FILE *pF = fopen("book_Records.txt", "r");
@@ -843,51 +883,45 @@ label4:
 
         if(compare == 0)
         {
+            if(bookSearcher != 3)
+            {
+                printf("\n-------------------------\n");
+                printf(">>> Record Found <<< \n");
+                printf("-------------------------\n\n");
 
-            printf("\n>>> Record Found <<< \n\n");
+                printf("-------------------------------\n");
+                printf("> Book Name: %s \n", name);
+                printf("> Auhtor: %s \n", author);
+                printf("> Publisher: %s\n", publisher);
+                printf("> Book ID: %.0lf \n", bookid);
+                printf("> Quantity: %.0lf \n", quantity);
+                printf("> Price: %.0lf \n", price);
+                printf("-------------------------------\n\n");
+            }
 
-            printf("-------------------------------\n");
-            printf("> Book Name: %s \n", name);
-            printf("> Auhtor: %s \n", author);
-            printf("> Publisher: %s\n", publisher);
-            printf("> Book ID: %.0lf \n", bookid);
-            printf("> Quantity: %.0lf \n", quantity);
-            printf("> Price: %.0lf \n", price);
-            printf("-------------------------------\n\n\n");
-            
             flag=1;
         }
     }
     
     fclose(pF);
-
+    
+    fflush(stdin);
+    
     if(flag == 0)
     {
-        printf("\n>>> Record Not Found <<< \n");
+        printf("\n>>> Record Not Found <<< \n\n");
     }
 
-    fflush(stdin);
-
-    char input;
-    printf("\nDo you wanna search for more records [y/N]: ");
-    scanf("%c",&input);
-
-    if(input == 'y' || input=='Y')
+    if(bookSearcher != 3)
     {
-        goto label4;
-    }
-    else if(input=='n' || input=='N')
-    {
-        printf("\nRedirecting to Book Panel.");
-        Sleep(2000);
+        printf("Press any key to redirect to Book Panel.");
+        getch();
         bookPanel();
     }
-    else
+    else if(bookSearcher == 3 && flag == 1)
     {
-        printf("\nInvaild input. Redirecting to Book Panel.");
-        Sleep(2000);
-        bookPanel();
-    } 
+        return 5;
+    }
 
 }
 
