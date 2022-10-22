@@ -42,6 +42,7 @@ int main(){
 // System Functions 
     int passTerminator = 1;
     int bookStock = 0;
+    char rentName[255], bookName[255];
 
 void password(){
 
@@ -494,7 +495,7 @@ label2:
                 printf("-------------------------------\n\n");
             
             }
-            
+            strcpy(rentName, fname);
             flag=1;
         }
     }
@@ -836,6 +837,7 @@ label6:
     }
     else if(bookFound == 5)
     {
+        // check if book quantity is > 0
         if(bookStock > 0)
         {
             printf("\nBook Found & In-Stock! \nPlease wait... \n");
@@ -851,12 +853,34 @@ label6:
         }
     }
 
-    // check if book quantity is > 0
-    
+    fflush(stdin);
+
+    /* printf("\n---------------------------------------------\n");
     printf("User Searcher: %d \n", nameFound);
     printf("Book Searcher: %d \n", bookFound);
+    printf("User Name: %s \n", rentName);
+    printf("Book Name: %s \n", bookName);
+    printf("---------------------------------------------\n\n"); */
 
-    // check if user has enough money for the book (book price) 
+    if(nameFound == 5 && bookFound == 5)
+    {
+        FILE *pF = fopen("rent_Records.txt", "ab+");
+
+        if(pF != NULL)
+        {
+            fprintf(pF, "%s %s \n", rentName, bookName);
+        }
+        else
+        {
+            printf("Unable to open/locate the file.");
+        }
+
+        fclose(pF);
+        
+        printf("\n>>> Book Record Added Successfully <<< \n");
+        Sleep(3000);
+        bookPanel();
+    }
 
     // global variables for storing records 
 
@@ -902,7 +926,7 @@ label4:
                 printf("> Quantity: %.0lf \n", quantity);
                 printf("-------------------------------\n\n");
             }
-
+            strcpy(bookName, name);
             bookStock = quantity;
             flag=1;
         }
