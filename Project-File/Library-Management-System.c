@@ -22,11 +22,12 @@ void addUser(void);
 void modifyUser(void);
 void listUser(void);
 int searchUser(int);
+void rentList(void);
 void deleteUser(void);
 
 // Book Operation Functions 
 void addBook(void);
-void modifyBook(void);
+int modifyBook(int);
 void listBook(void);
 void rentBook(void);
 int searchBook(int);
@@ -141,10 +142,11 @@ void userPanel(){
     printf("> 1. Add User \n");
     printf("> 2. Modify User \n");
     printf("> 3. List User \n");
-    printf("> 4. Search User \n");
-    printf("> 5. Delete User \n");
-    printf("> 6. Open Main Menu \n");
-    printf("> 7. Close the Program... \n\n");
+    printf("> 4. List Rentals \n");
+    printf("> 5. Search User \n");
+    printf("> 6. Delete User \n");
+    printf("> 7. Open Main Menu \n");
+    printf("> 8. Close the Program... \n\n");
 
     printf("> Enter the number & hit ENTER: ");
     scanf("%d",&number);
@@ -163,15 +165,18 @@ void userPanel(){
             listUser();
             break;
         case 4:
-            searchUser(0);
+            rentList();
             break;
         case 5:
-            deleteUser();
+            searchUser(0);
             break;
         case 6:
-            menu();
+            deleteUser();
             break;
         case 7:
+            menu();
+            break;
+        case 8:
             endScreen();
             break;
         default:
@@ -209,7 +214,7 @@ void bookPanel(){
             addBook();
             break;
         case 2:
-            modifyBook();
+            modifyBook(0);
             break;
         case 3:
             listBook();
@@ -664,7 +669,7 @@ label3:
     }
 }
 
-void modifyBook(){
+int modifyBook(int rentModifier){
     
     system("cls");
     fflush(stdin);
@@ -677,13 +682,19 @@ void modifyBook(){
 
     int flag=0;
     int compare;
-
     char find[255];
-    printf("Enter the name of the book you want to see the detail: ");
-    gets(find);
 
-    fflush(stdin);
-
+    if (rentModifier != 5)
+    {
+        printf("Enter the name of the book you want to see the detail: ");
+        gets(find);
+        fflush(stdin);
+    }
+    else
+    {
+        strcpy(find, bookName);
+    }
+    
     FILE *pF = fopen("book_Records.txt", "r");
     FILE *pT = fopen("temporary.txt", "a");
 
@@ -693,30 +704,37 @@ void modifyBook(){
 
         if(compare == 0)
         {
-            printf("\n---------------------------------------------\n");
-            printf(">>> Record Found, Allowing Modifications <<<\n");
-            printf("-----------------------------------------------\n\n");
+            if(rentModifier != 5)
+            {
+                printf("\n---------------------------------------------\n");
+                printf(">>> Record Found, Allowing Modifications <<<\n");
+                printf("-----------------------------------------------\n\n");
 
-            printf("> Enter Book Name: ");
-            gets(name1);
+                printf("> Enter Book Name: ");
+                gets(name1);
 
-            printf("> Enter Authour: ");
-            gets(author1);
+                printf("> Enter Authour: ");
+                gets(author1);
 
-            printf("> Enter Publisher: ");
-            gets(publisher1);
+                printf("> Enter Publisher: ");
+                gets(publisher1);
 
-            fflush(stdin);
+                fflush(stdin);
 
-            printf("> Enter Book ID: ");
-            scanf("%lf",&bookid1);
+                printf("> Enter Book ID: ");
+                scanf("%lf",&bookid1);
 
-            printf("> Enter Quantity: ");
-            scanf("%lf",&quantity1);
+                printf("> Enter Quantity: ");
+                scanf("%lf",&quantity1);
 
-            fprintf(pT, "%s %s %s %.0lf %.0lf \n", name1, author1, publisher1, bookid1, quantity1);
-            printf("\n\nProcessing your changes....");
-
+                fprintf(pT, "%s %s %s %.0lf %.0lf \n", name1, author1, publisher1, bookid1, quantity1);
+                printf("\n\nProcessing your changes....");
+            }
+            else
+            {
+                quantity = bookStock;
+                fprintf(pT, "%s %s %s %.0lf %.0lf \n", name, author, publisher, bookid, quantity);
+            }
             flag = 1;
         }
         else
@@ -755,8 +773,11 @@ void modifyBook(){
     pT = fopen("temporary.txt", "w");
     fclose(pT);
 
-    Sleep(2000);
-    bookPanel();
+    if(rentModifier != 5)
+    {
+        Sleep(2000);
+        bookPanel();
+    }
 }
 
 void listBook(){
@@ -841,12 +862,10 @@ label6:
         if(bookStock > 0)
         {
             printf("\nBook Found & In-Stock! \nPlease wait... \n");
-            Sleep(2000);
         }
         else
         {
             printf("\nSorry, Out of Stock! \nPlease wait... ");
-            bookStock = 0;
             Sleep(2000);
             (terminator == 3) ? bookPanel() : terminator++;
             goto label6;
@@ -864,6 +883,7 @@ label6:
 
     if(nameFound == 5 && bookFound == 5)
     {
+        // Adding record in rent_Records.txt file
         FILE *pF = fopen("rent_Records.txt", "ab+");
 
         if(pF != NULL)
@@ -876,15 +896,27 @@ label6:
         }
 
         fclose(pF);
-        
-        printf("\n>>> Book Record Added Successfully <<< \n");
-        Sleep(3000);
+
+        // reducing quantity of book by 1 
+        bookStock--;
+        modifyBook(5);
+
+        printf("---------------------------------------------\n");
+        printf(">>> Rent Record Added Successfully <<< \n");
+        printf("---------------------------------------------\n");
+
+        printf("\nRedirecting to Book Panel...\n");
+        Sleep(3500);
         bookPanel();
     }
+}
 
-    // global variables for storing records 
+void rentList(){
 
-    // new rental file for data storing 
+    system("cls");
+    fflush(stdin);
+
+    printf("Welcome to List Rentals Function, In-Progress....");
 }
 
 int searchBook(int bookSearcher){
