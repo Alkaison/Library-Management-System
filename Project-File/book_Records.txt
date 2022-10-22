@@ -1,5 +1,5 @@
-Dracula Willam Stanford 11 0 90 
-Shogun James Standford 12 5 50 
-Eillpsis Newton Oxford 13 15 110 
-Candide Voltaire Nalanda 14 15 120 
-Beloved Toni DTU 15 10 100 
+Dracula Willam Stanford 11 0 
+Shogun James Standford 12 10 
+Eillpsis Newton Oxford 13 15 
+Candide Voltaire Nalanda 14 15 
+Beloved Toni DTU 15 10 

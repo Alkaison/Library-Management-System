@@ -605,7 +605,7 @@ label3:
     fflush(stdin);
 
     char name[255], author[255], publisher[255];
-    double bookid, quantity, price;
+    double bookid, quantity;
 
     FILE *pF = fopen("book_Records.txt", "ab+");
 
@@ -628,10 +628,7 @@ label3:
         printf("Enter Book Quantity: ");
         scanf("%lf",&quantity);
 
-        printf("Enter Book Price: ");
-        scanf("%lf",&price);
-
-        fprintf(pF, "%s %s %s %.0lf %.0lf %.0lf \n", name, author, publisher, bookid, quantity, price);
+        fprintf(pF, "%s %s %s %.0lf %.0lf \n", name, author, publisher, bookid, quantity);
 
         printf("\n>>> Book Record Added Successfully <<< \n");
     }
@@ -672,10 +669,10 @@ void modifyBook(){
     fflush(stdin);
 
     char name[255], author[255], publisher[255];
-    double bookid, price, quantity;
+    double bookid, quantity;
 
     char name1[255], author1[255], publisher1[255];
-    double bookid1, price1, quantity1;
+    double bookid1, quantity1;
 
     int flag=0;
     int compare;
@@ -689,7 +686,7 @@ void modifyBook(){
     FILE *pF = fopen("book_Records.txt", "r");
     FILE *pT = fopen("temporary.txt", "a");
 
-    while(fscanf(pF, "%s %s %s %lf %lf %lf \n", name, author, publisher, &bookid, &quantity, &price) != EOF)
+    while(fscanf(pF, "%s %s %s %lf %lf \n", name, author, publisher, &bookid, &quantity) != EOF)
     {
         compare = strcmp(find, name);
 
@@ -716,17 +713,14 @@ void modifyBook(){
             printf("> Enter Quantity: ");
             scanf("%lf",&quantity1);
 
-            printf("> Enter Price: ");
-            scanf("%lf",&price1);
-
-            fprintf(pT, "%s %s %s %.0lf %.0lf %.0lf \n", name1, author1, publisher1, bookid1, quantity1, price1);
+            fprintf(pT, "%s %s %s %.0lf %.0lf \n", name1, author1, publisher1, bookid1, quantity1);
             printf("\n\nProcessing your changes....");
 
             flag = 1;
         }
         else
         {
-            fprintf(pT, "%s %s %s %.0lf %.0lf %.0lf \n", name, author, publisher, bookid, quantity, price);
+            fprintf(pT, "%s %s %s %.0lf %.0lf \n", name, author, publisher, bookid, quantity);
         }
     }
 
@@ -749,9 +743,9 @@ void modifyBook(){
     pF = fopen("book_Records.txt", "a");
     pT = fopen("temporary.txt", "r");
 
-    while(fscanf(pT, "%s %s %s %lf %lf %lf \n", name, author, publisher, &bookid, &quantity, &price) != EOF)
+    while(fscanf(pT, "%s %s %s %lf %lf \n", name, author, publisher, &bookid, &quantity) != EOF)
     {
-        fprintf(pF, "%s %s %s %.0lf %.0lf %.0lf \n", name, author, publisher, bookid, quantity, price);
+        fprintf(pF, "%s %s %s %.0lf %.0lf \n", name, author, publisher, bookid, quantity);
     }
 
     fclose(pF);
@@ -770,12 +764,12 @@ void listBook(){
     fflush(stdin);
 
     char name[255], author[255], publisher[255];
-    double quantity, price, bookid;
+    double quantity, bookid;
     int counter=0;
 
     FILE *pF = fopen("book_Records.txt", "r");
 
-    while(fscanf(pF, "%s %s %s %lf %lf %lf \n", name, author, publisher, &bookid, &quantity, &price) != EOF)
+    while(fscanf(pF, "%s %s %s %lf %lf \n", name, author, publisher, &bookid, &quantity) != EOF)
     {
         printf("-------------------------------\n");
         printf("> Book Name: %s \n", name);
@@ -783,7 +777,6 @@ void listBook(){
         printf("> Publisher: %s\n", publisher);
         printf("> Book ID: %.0lf \n", bookid);
         printf("> Quantity: %.0lf \n", quantity);
-        printf("> Price: %.0lf \n", price);
         printf("-------------------------------\n\n\n");
         counter++;
     }
@@ -863,9 +856,9 @@ label6:
     printf("User Searcher: %d \n", nameFound);
     printf("Book Searcher: %d \n", bookFound);
 
-    // check if user has enough money for the book (book price)
+    // check if user has enough money for the book (book price) 
 
-    // global variables for storing records
+    // global variables for storing records 
 
     // new rental file for data storing 
 }
@@ -878,7 +871,7 @@ label4:
     fflush(stdin);
 
     char name[255], author[255], publisher[255];
-    double bookid, price, quantity;
+    double bookid, quantity;
 
     int flag=0;
     int compare;
@@ -889,7 +882,7 @@ label4:
 
     FILE *pF = fopen("book_Records.txt", "r");
 
-    while(fscanf(pF, "%s %s %s %lf %lf %lf \n", name, author, publisher, &bookid, &quantity, &price) != EOF)
+    while(fscanf(pF, "%s %s %s %lf %lf \n", name, author, publisher, &bookid, &quantity) != EOF)
     {
         compare = strcmp(find, name);
 
@@ -907,7 +900,6 @@ label4:
                 printf("> Publisher: %s\n", publisher);
                 printf("> Book ID: %.0lf \n", bookid);
                 printf("> Quantity: %.0lf \n", quantity);
-                printf("> Price: %.0lf \n", price);
                 printf("-------------------------------\n\n");
             }
 
@@ -944,10 +936,10 @@ void deleteBook(){
     fflush(stdin);
 
     char name[255], author[255], publisher[255];
-    double bookid, price, quantity;
+    double bookid, quantity;
 
     char name1[255], author1[255], publisher1[255];
-    double bookid1, price1, quantity1;
+    double bookid1, quantity1;
 
     int flag=0;
     int compare;
@@ -961,7 +953,7 @@ void deleteBook(){
     FILE *pF = fopen("book_Records.txt", "r");
     FILE *pT = fopen("temporary.txt", "a");
 
-    while(fscanf(pF, "%s %s %s %lf %lf %lf \n", name, author, publisher, &bookid, &quantity, &price) != EOF)
+    while(fscanf(pF, "%s %s %s %lf %lf \n", name, author, publisher, &bookid, &quantity) != EOF)
     {
         compare = strcmp(find, name);
 
@@ -976,7 +968,7 @@ void deleteBook(){
         }
         else
         {
-            fprintf(pT, "%s %s %s %.0lf %.0lf %.0lf \n", name, author, publisher, bookid, quantity, price);
+            fprintf(pT, "%s %s %s %.0lf %.0lf \n", name, author, publisher, bookid, quantity);
         }
     }
 
@@ -999,9 +991,9 @@ void deleteBook(){
     pF = fopen("book_Records.txt", "a");
     pT = fopen("temporary.txt", "r");
 
-    while(fscanf(pT, "%s %s %s %lf %lf %lf \n", name, author, publisher, &bookid, &quantity, &price) != EOF)
+    while(fscanf(pT, "%s %s %s %lf %lf \n", name, author, publisher, &bookid, &quantity) != EOF)
     {
-        fprintf(pF, "%s %s %s %.0lf %.0lf %.0lf \n", name, author, publisher, bookid, quantity, price);
+        fprintf(pF, "%s %s %s %.0lf %.0lf \n", name, author, publisher, bookid, quantity);
     }
 
     fclose(pF);
