@@ -41,6 +41,7 @@ int main(){
 
 // System Functions 
     int passTerminator = 1;
+    int bookStock = 0;
 
 void password(){
 
@@ -842,8 +843,19 @@ label6:
     }
     else if(bookFound == 5)
     {
-        printf("\nBook Found & In-Stock! \nPlease wait... \n");
-        Sleep(2000);
+        if(bookStock > 0)
+        {
+            printf("\nBook Found & In-Stock! \nPlease wait... \n");
+            Sleep(2000);
+        }
+        else
+        {
+            printf("\nSorry, Out of Stock! \nPlease wait... ");
+            bookStock = 0;
+            Sleep(2000);
+            (terminator == 3) ? bookPanel() : terminator++;
+            goto label6;
+        }
     }
 
     // check if book quantity is > 0
@@ -899,6 +911,7 @@ label4:
                 printf("-------------------------------\n\n");
             }
 
+            bookStock = quantity;
             flag=1;
         }
     }
