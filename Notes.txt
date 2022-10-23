@@ -1,5 +1,5 @@
 Library Management System: 
-A Library Management System coded in C to improve understanding on the concepts on File Management, Record enter, modification, deletion. 
+A Library Management System coded in C to improve understanding on the concepts on File management, record entry, modification, deletion. 
 
 Description: 
 In this project, the system has keep records of book-ID, books name, 
