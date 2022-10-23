@@ -1,27 +1,26 @@
-LMS-in-C: 
-A Library Management System coded in C for my first semester cse project.
+Library Management System: 
+A Library Management System coded in C to improve understanding on the concepts on File Management, Record enter, modification, deletion. 
 
-Requirements: 
-In this project, the system has keep records of category, books name, 
+Description: 
+In this project, the system has keep records of book-ID, books name, 
 author name, quantity, borrower’s information such that name, contact 
-number, book issue date, return date and amount of fine if the return 
-date is over. User can search books by book name, author name or by 
-category. The system will show the search result with available quantity. 
+number, etc. User can search books by book name. The system will show the search result with available quantity. 
 If there are spare books then it could be lent otherwise not. 
-If any borrower doesn’t return within due date then there will be fine 
-calculated 30 Tk. Per day. Please check EWU library for better 
-understanding and incorporate all features.
 
 Code Pre-Requirements:
 1. Password Screen 
 2. Main Menu Screen
+3. User Panel 
+4. Book Panel 
+5. End Screen 
 
-Code Requirements [Part-1] [User] [users.txt]: 
+Code Requirements [Part-1] [User] [user_Records.txt]: 
 1. Add User
 2. Modify User
 3. List User
-4. Search User
-5. Delete User
+4. List Rental Books 
+5. Search User
+6. Delete User
 
 User Details: 
 1. Student ID
@@ -29,9 +28,8 @@ User Details:
 3. Last Name
 4. Gender
 5. Phone Number
-6. Amount (Balance) - Default: 1000₹ 
 
-Code Requirements [Part-2] [Book] [books.txt]: 
+Code Requirements [Part-2] [Book] [book_Records.txt]: 
 1. Add Book 
 2. Modify Book
 3. List Book
@@ -45,4 +43,3 @@ Book Details:
 3. Book Author 
 4. Book Publisher 
 5. Book Quantity 
-6. Rent Cost - Default: 100₹ 
