@@ -56,6 +56,10 @@ The concept of storing or recording the details of books embedded within the use
 &ensp;
 [![Ko-Fi Profile](https://github.com/Alkaison/GitBashDemo/blob/main/donate.svg)](https://ko-fi.com/alkaison)
 
+## Support
+
+For personal project support, join our Discord Server [here](https://discord.gg/dF4PHpA "Byte Hub Discord")
+
 ## MIT LICENSE 📔
 
 ```LICENSE
