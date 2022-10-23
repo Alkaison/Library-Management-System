@@ -915,8 +915,34 @@ void rentList(){
 
     system("cls");
     fflush(stdin);
+    
+    char rentListUser[255], rentListBook[255];
+    int counter = 0;
 
-    printf("Welcome to List Rentals Function, In-Progress....");
+    FILE *pF = fopen("rent_Records.txt", "r");
+    
+    while(fscanf(pF, "%s %s \n", rentListUser, rentListBook) != EOF)
+    {
+        printf("-------------------------------\n");
+        printf("> Rent User: %s \n", rentListUser);
+        printf("> Rent Book: %s \n", rentListBook);
+        printf("-------------------------------\n\n");
+        counter++;
+    }
+
+    fclose(pF);
+    fflush(stdin);
+
+    if(counter == 0)
+    {
+        printf("-------------------------------------\n");
+        printf("There is no rent records added yet...\n");
+        printf("--------------------------------------\n\n");
+    }
+
+    printf("Press any key to get back to User Panel.\n");
+    getch();
+    userPanel();
 }
 
 int searchBook(int bookSearcher){
