@@ -426,6 +426,10 @@ void listUser(){
     char fname[255], lname[255], gender[5];
     double sid, phone;
     int counter=0;
+
+    printf("-------------------------------\n");
+    printf(">>> List of Users Record <<< \n");
+    printf("-------------------------------\n\n");
     
     while(fscanf(pF, "%s %s %s %lf %lf \n", fname, lname, gender, &sid, &phone) != EOF)
     {
@@ -791,6 +795,10 @@ void listBook(){
 
     FILE *pF = fopen("book_Records.txt", "r");
 
+    printf("-------------------------------\n");
+    printf(">>> List of Books Record <<< \n");
+    printf("-------------------------------\n\n");
+
     while(fscanf(pF, "%s %s %s %lf %lf \n", name, author, publisher, &bookid, &quantity) != EOF)
     {
         printf("-------------------------------\n");
@@ -921,12 +929,15 @@ void rentList(){
 
     FILE *pF = fopen("rent_Records.txt", "r");
     
+    printf("-------------------------------\n");
+    printf(">>> List of Books Rental <<< \n");
+    printf("-------------------------------\n\n");
+
     while(fscanf(pF, "%s %s \n", rentListUser, rentListBook) != EOF)
     {
-        printf("-------------------------------\n");
         printf("> Rent User: %s \n", rentListUser);
-        printf("> Rent Book: %s \n", rentListBook);
-        printf("-------------------------------\n\n");
+        printf("> Rent Book(s): %s \n\n", rentListBook);
+        
         counter++;
     }
 
@@ -940,7 +951,7 @@ void rentList(){
         printf("--------------------------------------\n\n");
     }
 
-    printf("Press any key to get back to User Panel.\n");
+    printf("\nPress any key to get back to User Panel.\n");
     getch();
     userPanel();
 }
