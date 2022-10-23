@@ -45,6 +45,8 @@ int main(){
     int bookStock = 0;
     char rentName[255], bookName[255];
 
+// If the user enters invaild password 3 times then the program gets terminated.
+// Password: Alkaison
 void password(){
 
     system("cls");
@@ -83,8 +85,8 @@ void password(){
 		}
 	}
 
-	// printf("\n\nPassword:%s\nLength:%d\n\n", pwd, i);  -- prints the user input & lenght of string 
     fflush(stdin);
+
     // verifies the password 
     if(strcmp(code, pwd) == 0)
     {
@@ -101,6 +103,7 @@ void password(){
     }
 }
 
+// Main Selection menu between User & Book Panel 
 void menu(){
     
     system("cls");
@@ -131,6 +134,7 @@ void menu(){
     }
 }
 
+// User Panel sub-functions 
 void userPanel(){
 
     system("cls");
@@ -186,6 +190,7 @@ void userPanel(){
     }
 }
 
+// Book Panel sub-functions 
 void bookPanel(){
 
     system("cls");
@@ -241,13 +246,17 @@ void bookPanel(){
     }
 }
 
+// Program end credit screen - Yeah, i made it alone 
+// Star the Repo on github and follow me :) 
 void endScreen(){
 
     system("cls");
     fflush(stdin);
 
-    printf(">>> Library Management System in C <<< \n\n");
-    printf("> Creator: @Alkaison (Ganesh Mourya) \n\n");
+    printf("----------------------------------------------\n");
+    printf(">>> Creator: @Alkaison (Ganesh Mourya) <<< \n");
+    printf("----------------------------------------------\n\n");
+
     printf("> Github: https://github.com/Alkaison \n");
     printf("> Twitter: https://twitter.com/Alkaison \n");
     printf("> LinkedIn: https://www.linkedin.com/in/Alkaison \n\n");
@@ -256,7 +265,7 @@ void endScreen(){
 }
 
 // User Functions 
-
+// Creates new file if old doesn't exist and saves user records in it 
 void addUser(){
     
 label1:
@@ -324,6 +333,7 @@ label1:
     }
 }
 
+// Edit the user details and saves it 
 void modifyUser(){
 
     system("cls");
@@ -416,6 +426,7 @@ void modifyUser(){
 
 }
 
+// Lists all the user records from user_Records.txt file 
 void listUser(){
     
     system("cls");
@@ -461,6 +472,7 @@ void listUser(){
     userPanel();
 }
 
+// this checks if the specified user exists in the records or not 
 int searchUser(int nameSearcher){
 
 label2:
@@ -530,6 +542,7 @@ label2:
     }
 }
 
+// deletes the user information from user_Records.txt file 
 void deleteUser(){
 
     system("cls");
@@ -605,8 +618,8 @@ void deleteUser(){
     userPanel();
 }
 
-// Book Functions
-
+// Book Functions 
+// add the books record in book_Records.txt file 
 void addBook(){
 
 label3:
@@ -673,6 +686,7 @@ label3:
     }
 }
 
+// edits the book details according to you and saves it again 
 int modifyBook(int rentModifier){
     
     system("cls");
@@ -784,6 +798,7 @@ int modifyBook(int rentModifier){
     }
 }
 
+// lists all the book record from the book_Records.txt file 
 void listBook(){
 
     system("cls");
@@ -825,6 +840,11 @@ void listBook(){
     bookPanel();
 }
 
+// Book Rental function
+// first it checks whether the user is already registered in the user_Records.txt or not 
+// second it checks whether the book exists in the book_Records.txt or not 
+// third it checks if the book quantity is atleast 1, throws error if the book is OUT OF STOCK -- it also reduces book quantity by 1 from book_Recprds.txt 
+// fourth it registers the user name & book name in a new file rent_Records.txt and saves it :) 
 void rentBook(){
 
     int terminator=1, nameFound, bookFound;
@@ -919,6 +939,7 @@ label6:
     }
 }
 
+// lists all the username & booknames which are rented to someone in registered files 
 void rentList(){
 
     system("cls");
@@ -956,6 +977,7 @@ void rentList(){
     userPanel();
 }
 
+// searches for the book details by book name from the txt file 
 int searchBook(int bookSearcher){
 
 label4:
@@ -968,6 +990,7 @@ label4:
 
     int flag=0;
     int compare;
+    
     char find[255];
 
     (bookSearcher != 3) ? printf("Enter the name of the book you want to see the detail: ") : printf("Enter the name of the book you want: ");
@@ -1023,6 +1046,7 @@ label4:
 
 }
 
+// deletes the book records from .txt file 
 void deleteBook(){
 
     system("cls");
@@ -1098,3 +1122,4 @@ void deleteBook(){
     Sleep(2000);
     bookPanel();
 }
+// Program Ends here -- Have a nice day! 
