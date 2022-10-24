@@ -6,7 +6,7 @@
 
 The concept of storing or recording the details of books embedded within the user's system is known as Library Management System. It details the type of books, the list of books, etc. Only a person with the login credentials can access the Library Management System. That person can perform many operations like adding the book details, removing the book details, displaying the book details, modifying the book details, etc.
 
-## Password: **Alkaison**
+## Password: "Alkaison"
 
 The Library Management System is secured with a layer of authentication password for protecting the files from unauthorized access of strangers. Enter the password and hit ENTER. The password will not be shown publicly, it will shown in ***** format. Read the comments in the code to better understand how it works!
 
