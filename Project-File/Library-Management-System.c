@@ -1,3 +1,11 @@
+/*
+  Project Name: Library Management System
+  Created By: GANESH MOURYA
+  
+  Github: https://github.com/Alkaison/Library-Management-System/
+  LinkedIn: https://linkedin.com/in/Alkaison
+  Twitter: https://twitter.com/Alkaison
+*/
 // Pre-Defined Header Files
 #include<stdio.h>
 #include<conio.h>
