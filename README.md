@@ -6,9 +6,32 @@
 
 The concept of storing or recording the details of books embedded within the user's system is known as Library Management System. It details the type of books, the list of books, etc. Only a person with the login credentials can access the Library Management System. That person can perform many operations like adding the book details, removing the book details, displaying the book details, modifying the book details, etc.
 
+Things you can do with this system
+
+- Adding Users
+- Adding Books
+- Modifying Details  of Users
+- Modifying Details of Books
+- Searching specific USER from stored records
+- Searching specific BOOK from stored records
+- Renting Books
+- Listing all User records
+- Listing all Book records
+- Listing all Rented Book records
+- Deleting User record
+- Deleting Book record, etc.
+
 ## Password: "Alkaison"
 
 The Library Management System is secured with a layer of authentication password for protecting the files from unauthorized access of strangers. Enter the password and hit ENTER. The password will not be shown publicly, it will shown in ***** format. Read the comments in the code to better understand how it works!
+
+## Requirements for using it
+
+- A software (IDE) for reviewing the code
+- C/C++ compiler (Recommended: GCC Compiler)
+- Command Prompt or Windows Powershell
+
+**Note**: This program won't run on online compilers as they don't provide libraries for FILE Management & external storing.
 
 ## Screenshots 🖼️
 
