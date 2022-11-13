@@ -42,10 +42,8 @@ int searchBook(int);
 void deleteBook(void);
 
 // Main Function 
-int main(){
-
+void main(){
     password();
-    return 0;
 }
 
 // System Functions 
@@ -64,6 +62,10 @@ void password(){
     char code[255] = {"Alkaison"};
     int i = 0;
 	char ch;
+
+    printf("--------------------\n");
+    printf(">>> Login First <<<\n");
+    printf("--------------------\n\n");
 
 	printf("Enter your password. Hit ENTER to confirm. \n");
 	printf("Password:");
@@ -119,7 +121,9 @@ void menu(){
 
     int number;
 
+    printf("----------------------------------\n");
     printf(">>> Library Management System <<< \n");
+    printf("----------------------------------\n\n");
     printf("> 1. User Management Panel \n");
     printf("> 2. Book Management Panel \n\n");
     printf("> Enter the number & hit ENTER: ");
@@ -150,7 +154,9 @@ void userPanel(){
 
     int number;
 
+    printf("-----------------------------------------------\n");
     printf(">>> Library Management System - User Panel <<< \n");
+    printf("-----------------------------------------------\n\n");
     printf("> 1. Add User \n");
     printf("> 2. Modify User \n");
     printf("> 3. List User \n");
@@ -206,7 +212,9 @@ void bookPanel(){
 
     int number;
 
+    printf("-----------------------------------------------\n");
     printf(">>> Library Management System - Book Panel <<< \n");
+    printf("-----------------------------------------------\n\n");
     printf("> 1. Add Book \n");
     printf("> 2. Modify Book \n");
     printf("> 3. List Book \n");
@@ -495,7 +503,7 @@ label2:
     int compare;
     char find[255];
 
-    (nameSearcher != 3) ? printf("Enter the name of the person you want to see the detail: ") : printf("Enter the name of the student who wants to rent book: ");
+    (nameSearcher != 3) ? printf("Search by First name of the student: ") : printf("Search by First name of the student who wants to rent book: ");
     gets(find);
 
     FILE *pF = fopen("user_Records.txt", "r");
@@ -1001,7 +1009,7 @@ label4:
     
     char find[255];
 
-    (bookSearcher != 3) ? printf("Enter the name of the book you want to see the detail: ") : printf("Enter the name of the book you want: ");
+    (bookSearcher != 3) ? printf("Serach the book by Author name or Book name: ") : printf("Serach the book by Author name or Book name: ");
     gets(find);
 
     FILE *pF = fopen("book_Records.txt", "r");
@@ -1009,6 +1017,7 @@ label4:
     while(fscanf(pF, "%s %s %s %lf %lf \n", name, author, publisher, &bookid, &quantity) != EOF)
     {
         compare = strcmp(find, name);
+        compare = strcmp(find, author);
 
         if(compare == 0)
         {
