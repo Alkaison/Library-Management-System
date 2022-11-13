@@ -14,6 +14,7 @@ Things you can do with this system
 - Modifying Details of Books
 - Searching specific USER from stored records
 - Searching specific BOOK from stored records
+- Serach the book by Author name or Book name
 - Renting Books
 - Listing all User records
 - Listing all Book records
