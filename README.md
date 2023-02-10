@@ -40,39 +40,39 @@ The Library Management System is secured with a layer of authentication password
 
 ### 01. User Management Panel
 
-![Library-Management-System-1](https://github.com/Alkaison/Library-Management-System/blob/main/Project-Images/Library-Management-System-1.png)
+![Library-Management-System-1.png](https://i.postimg.cc/bJxT2LhJ/Library-Management-System-1.png)
 
 ### 02. Book Management Panel
 
-![Library-Management-System-2](https://github.com/Alkaison/Library-Management-System/blob/main/Project-Images/Library-Management-System-2.png)
+![Library-Management-System-2.png](https://i.postimg.cc/j2rRMxmc/Library-Management-System-2.png)
 
 ### 03. List Book Rentals
 
-![Library-Management-System-3](https://github.com/Alkaison/Library-Management-System/blob/main/Project-Images/Library-Management-System-3.png)
+![Library-Management-System-3.png](https://i.postimg.cc/GpWRp3LR/Library-Management-System-3.png)
 
 ### 04. Search Record
 
-![Library-Management-System-4](https://github.com/Alkaison/Library-Management-System/blob/main/Project-Images/Library-Management-System-4.png)
+
 
 ### 05. Record Modification
 
-![Library-Management-System-5](https://github.com/Alkaison/Library-Management-System/blob/main/Project-Images/Library-Management-System-5.png)
+
 
 ### 06. New Book Record
 
-![Library-Management-System-6](https://github.com/Alkaison/Library-Management-System/blob/main/Project-Images/Library-Management-System-6.png)
+
 
 ### 07. List Book Record
 
-![Library-Management-System-7](https://github.com/Alkaison/Library-Management-System/blob/main/Project-Images/Library-Management-System-7.png)
+
 
 ### 08. List User Record
 
-![Library-Management-System-8](https://github.com/Alkaison/Library-Management-System/blob/main/Project-Images/Library-Management-System-8.png)
+
 
 ### 09. End-Screen
 
-![Library-Management-System-9](https://github.com/Alkaison/Library-Management-System/blob/main/Project-Images/Library-Management-System-9.png)
+
 
 ## Contact me through 📨
 
