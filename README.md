@@ -36,8 +36,6 @@ The Library Management System is secured with a layer of authentication password
 
 ## Screenshots 🖼️
 
-> Below is a glimpse of the program to access the program download this repository and run on your system :)
-
 ### 01. User Management Panel
 
 ![Library-Management-System-1.png](https://i.postimg.cc/bJxT2LhJ/Library-Management-System-1.png)
@@ -48,41 +46,31 @@ The Library Management System is secured with a layer of authentication password
 
 ### 03. List Book Rentals
 
-![Library-Management-System-3.png](https://i.postimg.cc/GpWRp3LR/Library-Management-System-3.png)
+![Library-Management-System-3.png](https://i.postimg.cc/g05y0spR/Library-Management-System-3.png)
 
 ### 04. Search Record
 
-
+![Library-Management-System-4.png](https://i.postimg.cc/yddh1G27/Library-Management-System-4.png)
 
 ### 05. Record Modification
 
-
+![Library-Management-System-5.png](https://i.postimg.cc/ZK3Qz9rV/Library-Management-System-5.png)
 
 ### 06. New Book Record
 
-
+![Library-Management-System-6.png](https://i.postimg.cc/SsJZTjSL/Library-Management-System-6.png)
 
 ### 07. List Book Record
 
-
+![Library-Management-System-7.png](https://i.postimg.cc/zffpv3gm/Library-Management-System-7.png)
 
 ### 08. List User Record
 
-
+![Library-Management-System-8.png](https://i.postimg.cc/R0bdH97W/Library-Management-System-8.png)
 
 ### 09. End-Screen
 
-
-
-## Contact me through 📨
-
-[![Discord Server](https://github.com/gauravghongde/social-icons/blob/master/SVG/Color/Discord.svg)](https://discord.gg/dF4PHxbHpA)
-&ensp;
-[![LinkedIn Profile](https://github.com/gauravghongde/social-icons/blob/master/SVG/Color/LinkedIN.svg)](https://www.linkedin.com/in/alkaison)
-&ensp;
-[![MailID](https://github.com/Alkaison/GitBashDemo/blob/main/mail.svg)](mailto:505ganeshmourya@gmail.com)
-&ensp;
-[![Ko-Fi Profile](https://github.com/Alkaison/GitBashDemo/blob/main/donate.svg)](https://ko-fi.com/alkaison)
+![Library-Management-System-9.png](https://i.postimg.cc/Z5bxs0j9/Library-Management-System-9.png)
 
 ## Support
 
